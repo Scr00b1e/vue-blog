@@ -10,6 +10,9 @@ import BlogItem from './BlogItem.vue';
 export default {
     components: {
         BlogItem
+    },
+    props: {
+        type: Object
     }
 }
 </script>

@@ -2,7 +2,13 @@
     <div class="container">
         <Header></Header>
         <input type="text" placeholder="Title...">
-        <BlogList></BlogList>
+        <!-- <BlogList v-for="posts in list">
+            
+        </BlogList> -->
+        <div v-for="posts in list">
+            {{ posts.title }}
+            {{ posts.body }}
+        </div>
     </div>
 </template>
 
@@ -13,6 +19,15 @@ export default {
     components: {
         Header,
         BlogList
+    },
+    data() {
+        return {
+            list: [
+                { title: 'Hey', body: 'howdy' },
+                { title: 'Hey2', body: 'howdy2' },
+                { title: 'Hey3', body: 'howdy3' },
+            ]
+        }
     }
 }
 </script>
