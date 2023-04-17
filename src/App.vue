@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <Header></Header>
-        <input type="text" placeholder="Title...">
-        <!-- <BlogList v-for="posts in list">
-            
-        </BlogList> -->
+        <input v-bind:value="title" @input="title = $event.target.value" type="text" placeholder="Title...">
+        <input v-bind:value="body" @input="body = $event.target.value" type="text" placeholder="Description...">
+        <button @click="onAdd">Create</button>
+        <!-- <BlogList v-for="posts in list"></BlogList> -->
         <div v-for="posts in list">
             {{ posts.title }}
             {{ posts.body }}
@@ -26,7 +26,19 @@ export default {
                 { title: 'Hey', body: 'howdy' },
                 { title: 'Hey2', body: 'howdy2' },
                 { title: 'Hey3', body: 'howdy3' },
-            ]
+            ],
+            title: '',
+            body: ''
+        }
+    },
+    methods: {
+        onAdd() {
+            const newPost = {
+                id: Date.now(),
+                title: this.title,
+                body: this.body
+            }
+            this.list.push(newPost)
         }
     }
 }
