@@ -1,8 +1,7 @@
 <template>
     <div>
-        <div v-for="post in list">
-            {{ post.title }}
-            {{ post.body }}
+        <div>
+            <blog-item v-for="post in list" :post="post" />
         </div>
     </div>
 </template>
