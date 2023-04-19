@@ -2,8 +2,8 @@
     <div class="container">
         <Header></Header>
         <div>
-            <blog-form />
-            <blog-list :list="list" @create="createPost" />
+            <blog-form @create="createPost" />
+            <blog-list :list="list" />
         </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         createPost(list) {
-
+            this.list.push(list)
         }
     }
 }
