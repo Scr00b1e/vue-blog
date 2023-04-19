@@ -1,22 +1,22 @@
 <template>
     <div class="container">
         <Header></Header>
-        <div @submit.prevent>
-            <input v-bind:value="title" @input="title = $event.target.value" type="text" placeholder="Title...">
-            <input v-bind:value="body" @input="body = $event.target.value" type="text" placeholder="Description...">
-            <button @click="onAdd">Create</button>
-            <blog-list :list="list" />
+        <div>
+            <blog-form />
+            <blog-list :list="list" @create="createPost" />
         </div>
     </div>
 </template>
 
 <script>
+import BlogForm from './components/BlogForm.vue';
 import BlogList from './components/BlogList.vue';
 import Header from './components/Header.vue';
 export default {
     components: {
         Header,
-        BlogList
+        BlogList,
+        BlogForm
     },
     data() {
         return {
@@ -25,20 +25,11 @@ export default {
                 { title: 'Hey2', body: 'howdy2' },
                 { title: 'Hey3', body: 'howdy3' },
             ],
-            title: '',
-            body: ''
         }
     },
     methods: {
-        onAdd() {
-            const newPost = {
-                id: Date.now(),
-                title: this.title,
-                body: this.body
-            }
-            this.list.push(newPost)
-            this.title = ''
-            this.body = ''
+        createPost(list) {
+
         }
     }
 }
