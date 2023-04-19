@@ -1,7 +1,9 @@
 <template>
     <div>
-        Recently:
-        <BlogItem></BlogItem>
+        <div v-for="post in list">
+            {{ post.title }}
+            {{ post.body }}
+        </div>
     </div>
 </template>
 
@@ -12,7 +14,10 @@ export default {
         BlogItem
     },
     props: {
-        type: Object
+        list: {
+            type: Array,
+            required: true
+        }
     }
 }
 </script>

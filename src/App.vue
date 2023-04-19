@@ -1,13 +1,11 @@
 <template>
     <div class="container">
         <Header></Header>
-        <input v-bind:value="title" @input="title = $event.target.value" type="text" placeholder="Title...">
-        <input v-bind:value="body" @input="body = $event.target.value" type="text" placeholder="Description...">
-        <button @click="onAdd">Create</button>
-        <!-- <BlogList v-for="posts in list"></BlogList> -->
-        <div v-for="posts in list">
-            {{ posts.title }}
-            {{ posts.body }}
+        <div @submit.prevent>
+            <input v-bind:value="title" @input="title = $event.target.value" type="text" placeholder="Title...">
+            <input v-bind:value="body" @input="body = $event.target.value" type="text" placeholder="Description...">
+            <button @click="onAdd">Create</button>
+            <blog-list :list="list" />
         </div>
     </div>
 </template>
@@ -39,6 +37,8 @@ export default {
                 body: this.body
             }
             this.list.push(newPost)
+            this.title = ''
+            this.body = ''
         }
     }
 }
