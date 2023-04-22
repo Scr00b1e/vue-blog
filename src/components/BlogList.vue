@@ -1,6 +1,7 @@
 <template>
     <div>
         <div>
+            <h1>Posts:</h1>
             <blog-item v-for="post in list" :post="post" />
         </div>
     </div>

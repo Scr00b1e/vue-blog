@@ -1,9 +1,11 @@
 <template>
     <div class="container">
-        <Header></Header>
-        <div>
-            <blog-form @create="createPost" />
-            <blog-list :list="list" />
+        <div class="app">
+            <Header></Header>
+            <div>
+                <blog-form @create="createPost" />
+                <blog-list :list="list" />
+            </div>
         </div>
     </div>
 </template>
@@ -48,5 +50,10 @@ export default {
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
+}
+
+.app {
+    position: relative;
+    padding-top: 50px;
 }
 </style>

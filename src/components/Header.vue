@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="header">
         Blog
     </div>
 </template>
@@ -10,4 +10,16 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    width: 100%;
+    padding: 10px 70px;
+    border-bottom: 3px #000 solid;
+}
+</style>

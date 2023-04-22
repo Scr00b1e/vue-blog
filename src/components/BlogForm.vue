@@ -1,13 +1,20 @@
 <template>
-    <div @submit.prevent>
-        <input v-model="list.title" type="text" placeholder="Title...">
-        <input v-model="list.body" type="text" placeholder="Description...">
-        <button @click="createPost">Create</button>
-    </div>
+    <form @submit.prevent class="form">
+        <!-- <input v-model="list.title" type="text" placeholder="Title...">
+        <input v-model="list.body" type="text" placeholder="Description..."> -->
+        <custom-input />
+        <div>
+            <button @click="createPost">Create</button>
+        </div>
+    </form>
 </template>
 
 <script>
+import CustomInput from './UI/CustomInput.vue'
 export default {
+    components: {
+        CustomInput
+    },
     data() {
         return {
             list: {
@@ -29,4 +36,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+</style>
