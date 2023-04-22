@@ -14,6 +14,7 @@
 import BlogForm from './components/BlogForm.vue';
 import BlogList from './components/BlogList.vue';
 import Header from './components/Header.vue';
+import axios from 'axios'
 export default {
     components: {
         Header,
@@ -22,17 +23,24 @@ export default {
     },
     data() {
         return {
-            list: [
-                { title: 'Hey', body: 'howdy' },
-                { title: 'Hey2', body: 'howdy2' },
-                { title: 'Hey3', body: 'howdy3' },
-            ],
+            list: [],
         }
     },
     methods: {
         createPost(list) {
             this.list.push(list)
+        },
+        async getData() {
+            try {
+                const res = await axios.get('https://jsonplaceholder.typicode.com/posts?limit=10')
+                this.list = res.data
+            } catch {
+                alert('Something is wrong...')
+            }
         }
+    },
+    mounted() {
+        this.getData()
     }
 }
 </script>
