@@ -31,6 +31,11 @@ export default {
     data() {
         return {
             list: [],
+            selectedSort: '',
+            sortOptions: [
+                { value: 'title', name: 'Title' },
+                { value: 'body', name: 'Description' }
+            ]
         }
     },
     methods: {
@@ -48,6 +53,11 @@ export default {
     },
     mounted() {
         this.getData()
+    },
+    computed: {
+        sortPosts() {
+            return [...this.list].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+        }
     }
 }
 </script>
