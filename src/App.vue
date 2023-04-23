@@ -2,9 +2,14 @@
     <div class="container">
         <div class="app">
             <Header></Header>
-            <div>
-                <blog-form @create="createPost" />
-                <blog-list :list="list" />
+            <div class="app__content">
+                <div class="app__left">
+                    <blog-form @create="createPost" />
+                    <blog-list :list="list" />
+                </div>
+                <div class="app__right">
+                    <Sidebar />
+                </div>
             </div>
         </div>
     </div>
@@ -15,11 +20,13 @@ import BlogForm from './components/BlogForm.vue';
 import BlogList from './components/BlogList.vue';
 import Header from './components/Header.vue';
 import axios from 'axios'
+import Sidebar from './components/Sidebar.vue';
 export default {
     components: {
         Header,
         BlogList,
-        BlogForm
+        BlogForm,
+        Sidebar
     },
     data() {
         return {
@@ -32,7 +39,7 @@ export default {
         },
         async getData() {
             try {
-                const res = await axios.get('https://jsonplaceholder.typicode.com/posts?limit=10')
+                const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
                 this.list = res.data
             } catch {
                 alert('Something is wrong...')
@@ -54,6 +61,11 @@ export default {
     box-sizing: border-box;
 }
 
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+}
+
 .container {
     width: 100%;
     max-width: 1120px;
@@ -63,5 +75,19 @@ export default {
 .app {
     position: relative;
     padding-top: 50px;
+}
+
+.app__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.app__left {
+    width: 80%;
+}
+
+.app__right {
+    width: 20%;
+    margin-left: 20px;
 }
 </style>
