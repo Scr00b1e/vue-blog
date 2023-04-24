@@ -1,7 +1,6 @@
 <template>
     <aside>
-        <custom-input></custom-input>
-        <custom-select :options="sortOptions" />
+        <custom-select :options="options" />
     </aside>
 </template>
 
@@ -16,7 +15,7 @@ export default {
     props: {
         options: {
             type: Object
-        }
+        },
     },
 }
 </script>

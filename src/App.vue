@@ -5,11 +5,12 @@
             <div class="app__content">
                 <div class="app__left">
                     <blog-form @create="createPost" />
-                    <blog-list :list="list" v-if="!loading" />
+                    <blog-list :list="searchPosts" v-if="!loading" />
                     <h1 v-else>Loading...</h1>
                 </div>
                 <div class="app__right">
-                    <Sidebar :options="sortOptions" />
+                    <custom-input placeholder="Search..." v-model="searchQuery" />
+                    <Sidebar :options="sortOptions" :searchQuery="searchQuery" />
                 </div>
             </div>
         </div>
@@ -22,18 +23,21 @@ import BlogList from './components/BlogList.vue';
 import Header from './components/Header.vue';
 import axios from 'axios'
 import Sidebar from './components/Sidebar.vue';
+import CustomInput from './components/UI/CustomInput.vue';
 export default {
     components: {
         Header,
         BlogList,
         BlogForm,
-        Sidebar
+        Sidebar,
+        CustomInput
     },
     data() {
         return {
             list: [],
             loading: false,
             selectedSort: '',
+            searchQuery: '',
             sortOptions: [
                 { value: 'title', name: 'Title' },
                 { value: 'body', name: 'Description' }
@@ -63,6 +67,9 @@ export default {
     computed: {
         sortPosts() {
             return [...this.list].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+        },
+        searchPosts() {
+            return this.sortPosts.filter(obj => obj.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
         }
     }
 }

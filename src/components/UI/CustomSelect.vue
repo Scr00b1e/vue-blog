@@ -1,14 +1,17 @@
 <template>
     <select class="select">
         <option disabled value="">Select</option>
-        <option value="title">Title</option>
-        <option value="body">Description</option>
+        <option v-for="option in options" :value="option.value" :key="option.value">{{ option.name }}</option>
     </select>
 </template>
 
 <script>
 export default {
-
+    props: {
+        options: {
+            type: Object
+        }
+    }
 }
 </script>
 
