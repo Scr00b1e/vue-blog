@@ -5,7 +5,8 @@
             <div class="app__content">
                 <div class="app__left">
                     <blog-form @create="createPost" />
-                    <blog-list :list="list" />
+                    <blog-list :list="list" v-if="!loading" />
+                    <h1 v-else>Loading...</h1>
                 </div>
                 <div class="app__right">
                     <Sidebar />
@@ -31,6 +32,7 @@ export default {
     data() {
         return {
             list: [],
+            loading: false,
             selectedSort: '',
             sortOptions: [
                 { value: 'title', name: 'Title' },
@@ -43,11 +45,15 @@ export default {
             this.list.push(list)
         },
         async getData() {
+            this.loading = true
             try {
                 const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
                 this.list = res.data
             } catch {
                 alert('Something is wrong...')
+            }
+            finally {
+                this.loading = false
             }
         }
     },
