@@ -2,7 +2,8 @@
     <form @submit.prevent class="form">
         <!-- <input v-model="list.title" type="text" placeholder="Title...">
         <input v-model="list.body" type="text" placeholder="Description..."> -->
-        <custom-input />
+        <custom-input v-model="list.title" placeholder="Title..." />
+        <custom-input v-model="list.body" placeholder="Description..." />
         <div>
             <button @click="createPost">Create</button>
         </div>

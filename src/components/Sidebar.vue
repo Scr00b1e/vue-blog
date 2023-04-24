@@ -1,20 +1,23 @@
 <template>
     <aside>
         <custom-input></custom-input>
-        <select class="select">
-            <option disabled value="">Select</option>
-            <option value="">Title</option>
-            <option value="">Description</option>
-        </select>
+        <custom-select :options="sortOptions" />
     </aside>
 </template>
 
 <script>
 import CustomInput from './UI/CustomInput.vue';
+import CustomSelect from './UI/CustomSelect.vue';
 export default {
     components: {
-        CustomInput
-    }
+        CustomInput,
+        CustomSelect
+    },
+    props: {
+        options: {
+            type: Object
+        }
+    },
 }
 </script>
 

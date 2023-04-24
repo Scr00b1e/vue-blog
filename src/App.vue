@@ -9,7 +9,7 @@
                     <h1 v-else>Loading...</h1>
                 </div>
                 <div class="app__right">
-                    <Sidebar />
+                    <Sidebar :options="sortOptions" />
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@ export default {
         }
     },
     methods: {
-        createPost(list) {
-            this.list.push(list)
+        createPost(lists) {
+            this.list.push(lists)
         },
         async getData() {
             this.loading = true
