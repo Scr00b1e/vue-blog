@@ -1,6 +1,8 @@
 <template>
     <div class="header">
-        Blog
+        <a href="/" class="header__link">
+            Blog
+        </a>
     </div>
 </template>
 
@@ -22,5 +24,11 @@ export default {
     padding: 10px 70px;
     border-bottom: 3px #000 solid;
     background: #fff;
+}
+
+.header__link {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
 }
 </style>
