@@ -10,7 +10,7 @@
                 </div>
                 <div class="app__right">
                     <custom-input placeholder="Search..." v-model="searchQuery" />
-                    <Sidebar :options="sortOptions" :searchQuery="searchQuery" />
+                    <custom-select :options="sortOptions" :searchQuery="searchQuery" />
                 </div>
             </div>
         </div>
@@ -22,15 +22,15 @@ import BlogForm from './components/BlogForm.vue';
 import BlogList from './components/BlogList.vue';
 import Header from './components/Header.vue';
 import axios from 'axios'
-import Sidebar from './components/Sidebar.vue';
 import CustomInput from './components/UI/CustomInput.vue';
+import CustomSelect from './components/UI/CustomSelect.vue';
 export default {
     components: {
         Header,
         BlogList,
         BlogForm,
-        Sidebar,
-        CustomInput
+        CustomInput,
+        CustomSelect
     },
     data() {
         return {

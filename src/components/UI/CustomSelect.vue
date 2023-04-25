@@ -1,7 +1,7 @@
 <template>
     <select class="select">
-        <option disabled value="">Select</option>
-        <option v-for="option in options" :value="option.value" :key="option.value">{{ option.name }}</option>
+        <option v-for="option in options" :value="option.value" :key="option.value" class="option">{{ option.name }}
+        </option>
     </select>
 </template>
 
@@ -15,4 +15,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.select {
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.option {
+    padding: 5px;
+}
+</style>
