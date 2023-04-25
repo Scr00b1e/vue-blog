@@ -2,6 +2,7 @@
     <div class="item">
         <h1>{{ post.title }}</h1>
         <h3>{{ post.body }}</h3>
+        <button @click="$router.push(`/posts/${post.id}`)">Go to page</button>
     </div>
 </template>
 
