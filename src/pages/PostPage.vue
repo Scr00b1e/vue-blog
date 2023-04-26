@@ -7,7 +7,7 @@
         </div>
         <div class="app__right">
             <custom-input placeholder="Search..." v-model="searchQuery" />
-            <custom-select :options="sortOptions" :searchQuery="searchQuery" />
+            <custom-select :options="sortOptions" v-model="selectedSort" />
         </div>
     </div>
 </template>
